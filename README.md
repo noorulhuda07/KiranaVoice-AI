@@ -1,43 +1,184 @@
-# KiranaVoice AI
+# KiranaVoice AI 🛒🎙️
 
-## Run locally (Windows PowerShell)
+**A voice-powered AI assistant designed to simplify inventory management and everyday operations for Indian kirana stores.**
 
-The backend uses FastAPI, SQLite, and the dependencies pinned in
-`backend/requirements.txt`. From the project root:
+KiranaVoice AI enables shopkeepers to interact with their store management system using natural-language voice commands in Hindi, Hinglish and English.
 
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
-Set-Location backend
-..\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --port 8000
+Instead of navigating multiple screens or manually entering stock details, shopkeepers can use conversational commands to manage inventory and access store information.
+
+## 💡 Problem Statement
+
+Many small kirana stores in India still depend on manual processes, notebooks and traditional methods to manage inventory.
+
+These processes can be:
+- Time-consuming
+- Difficult to maintain
+- Prone to human errors
+- Inconvenient for busy shopkeepers
+
+KiranaVoice AI aims to make store management more accessible through voice-based interactions.
+
+## 🚀 Key Features
+
+- **Voice-Based Interaction:** Interact with the application using spoken commands.
+- **Hindi & Hinglish Support:** Designed for natural Indian language interactions.
+- **AI-Powered Command Understanding:** Interpret commands and identify the intended store operation.
+- **Inventory Management:** Add and remove product stock.
+- **Stock Tracking:** Check product availability and quantities.
+- **Natural Language Processing:** Extract product names, quantities, units and actions from commands.
+- **Store Dashboard:** View inventory and store-related information through a user-friendly interface.
+
+## 🎙️ Example Voice Commands
+
+| Voice command | Expected action |
+|---|---|
+| Maggi ke 10 packet add karo | Add 10 Maggi packets |
+| 5 kilo chawal stock mein add karo | Add 5 kg rice |
+| 2 packet biscuit hatao | Remove 2 biscuit packets |
+| Maggi ka stock kitna hai? | Check Maggi stock |
+
+## 🏗️ Architecture
+
+KiranaVoice AI follows a frontend-backend architecture.
+
+1. **Frontend:** Captures voice input and displays inventory information.
+2. **Speech Recognition:** Gnani Prisma converts spoken input into text.
+3. **Command Processing:** Interprets the transcript and extracts the intended action.
+4. **Backend:** Processes requests and handles inventory operations.
+5. **Inventory Management:** Updates or retrieves relevant stock information.
+6. **Response:** Displays the operation result to the user.
+
+## 🛠️ Technology Stack
+
+Update this list according to the actual implementation.
+
+- **Frontend:** React, Vite
+- **Backend:** Python, FastAPI
+- **Speech-to-Text:** Gnani Prisma STT
+- **AI / NLP:** Existing LLM and command-processing integration
+- **Development Tools:** Visual Studio Code, Git, GitHub
+
+## 📁 Project Structure
+
+```text
+KiranaVoice-AI/
+├── backend/
+├── frontend/
+├── docs/
+├── .env.example
+├── .gitignore
+└── README.md
 ```
 
-If creating a local environment from scratch, run `python -m venv .venv` from
-the project root, then use `.\.venv\Scripts\python.exe` in place of
-`..\.venv\Scripts\python.exe` after changing to `backend`. The backend reads
-`backend\.env`; set `GNANI_API_KEY` there to your own key to enable Gnani voice
-services. Keep it blank to run the inventory and text-command workflows without
-Gnani. Speech transcription also requires FFmpeg on `PATH`.
+## ⚙️ Getting Started
 
-Run backend tests from `backend` with:
+### Prerequisites
 
-```powershell
-..\.venv\Scripts\python.exe -m pytest -q
+- Python 3.10 or compatible project version
+- Node.js and npm
+- Git
+- Gnani API credentials
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+cd KiranaVoice-AI
 ```
 
-In a second PowerShell window, from the project root:
+### 2. Set up the backend
+
+```bash
+cd backend
+python -m venv venv
+```
+
+Activate the virtual environment.
+
+Windows:
 
 ```powershell
-Set-Location frontend
+.\venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file inside the backend directory.
+
+Add your credentials:
+
+```env
+GNANI_API_KEY=your_gnani_api_key
+```
+
+Add other required variables based on `.env.example`.
+
+**Never commit your actual API keys or `.env` file to GitHub.**
+
+### 4. Start the backend
+
+Use the startup command specified by the existing backend configuration.
+
+For a FastAPI application, this may be:
+
+```bash
+uvicorn main:app --reload
+```
+
+### 5. Start the frontend
+
+Open another terminal:
+
+```bash
+cd frontend
 npm install
 npm run dev
 ```
 
-The frontend reads `frontend\.env` (`VITE_API_URL=http://127.0.0.1:8000`).
-The API health endpoint is `http://127.0.0.1:8000/api/health`; the Vite app is
-`http://localhost:5173`.
+Open the local URL displayed by Vite.
 
-## Status
-- Done: product CRUD, add/sell/check/low-stock, alias matching, clarification, unit/stock validation,
-  large-change confirmation, undo as compensating transaction, transaction history, decimal quantities.
-- Gnani Prisma v2.5 STT + Timbre v2.5 TTS wired per docs.gnani.ai (backend/app/gnani.py). NOT yet tested with a real key.
-- Not built: stock reconciliation, settings page, auth, deployment config.
+## 🔐 Security
+
+- Store API credentials in environment variables.
+- Never expose secret keys in frontend code.
+- Keep `.env` excluded through `.gitignore`.
+- Use `.env.example` to document required configuration.
+
+## 🧪 Testing
+
+Run the backend and frontend tests using the commands configured in their respective project directories.
+
+Test voice recognition, command interpretation and inventory operations independently.
+
+## 🛣️ Future Improvements
+
+- More robust multilingual command understanding.
+- Improved Hindi and regional-language support.
+- Conversational inventory analytics.
+- Low-stock alerts and intelligent restocking suggestions.
+- Sales insights and business analytics.
+- Offline or low-connectivity support.
+- Integration with WhatsApp and other store-management workflows.
+
+## 🎯 Vision
+
+Our vision is to make AI-powered digital tools accessible to India's small businesses by reducing operational complexity and enabling natural, voice-first interactions.
+
+**Built with the goal of making everyday kirana store operations smarter, simpler and more accessible.**
+
+---
+
+## 👥 Contributors
+
+Built by team ZENITH.
+NOOR UL HUDA 
+SHIVANSHU SINGH
+## 📄 License
+
+Specify your chosen open-source license before publishing.
